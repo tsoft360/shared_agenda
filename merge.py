@@ -2,6 +2,8 @@ import requests
 from icalendar import Calendar
 import os
 
+#secrets
+
 FEEDS = {
     "thijs": os.environ["THIJS"].strip(),
     "lucas": os.environ["LUCAS"].strip(),
