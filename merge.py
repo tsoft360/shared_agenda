@@ -2,10 +2,7 @@ import requests
 from icalendar import Calendar
 
 FEEDS = {
-    "thijs": "https://api.somtoday.nl/rest/v1/icalendar/stream/0792a6e2-9833-45e8-b1eb-1498cf22f10d/02a633dc-b7b4-4a08-8371-45e60b8bc106",
-    "niels": "https://api.somtoday.nl/rest/v1/icalendar/stream/0792a6e2-9833-45e8-b1eb-1498cf22f10d/5698efc6-18c2-4b53-b816-37c87e02a376",
-    "lucas": "https://api.somtoday.nl/rest/v1/icalendar/stream/0792a6e2-9833-45e8-b1eb-1498cf22f10d/80e15401-bb1d-44ff-a501-b8fea2e37ccc",
-    "marnix": "https://api.somtoday.nl/rest/v1/icalendar/stream/0792a6e2-9833-45e8-b1eb-1498cf22f10d/e13a6ac5-735c-4943-8765-d9b15bc102d0"
+
 }
 
 merged_events = {}
