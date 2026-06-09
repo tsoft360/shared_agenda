@@ -12,7 +12,7 @@ env:
 on:
   workflow_dispatch:
   schedule:
-    - cron: '28 17 * * *'
+    - cron: '00 7 * * *'
 
 jobs:
   update:
