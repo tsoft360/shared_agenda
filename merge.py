@@ -2,7 +2,10 @@ import requests
 from icalendar import Calendar
 
 FEEDS = {
-
+    thijs: ${{ secrets.THIJS }}
+    lucas: ${{ secrets.LUCAS }}
+    marnix: ${{ secrets.MARNIX }}
+    niels: ${{ secrets.NIELS }}
 }
 
 merged_events = {}
