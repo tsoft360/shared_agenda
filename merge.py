@@ -3,10 +3,10 @@ from icalendar import Calendar
 import os
 
 FEEDS = {
-    "thijs": os.environ["THIJS"],
-    "lucas": os.environ["LUCAS"],
-    "marnix": os.environ["MARNIX"],
-    "niels": os.environ["NIELS"]
+    "thijs": os.environ["THIJS"].strip(),
+    "lucas": os.environ["LUCAS"].strip(),
+    "marnix": os.environ["MARNIX"].strip(),
+    "niels": os.environ["NIELS"].strip()
 }
 
 print(FEEDS)
