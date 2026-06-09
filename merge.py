@@ -9,6 +9,8 @@ FEEDS = {
     "niels": os.environ["NIELS"]
 }
 
+print(FEEDS)
+
 merged_events = {}
 
 for student_name, url in FEEDS.items():
