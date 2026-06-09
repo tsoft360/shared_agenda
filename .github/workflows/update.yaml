@@ -10,9 +10,9 @@ env:
   NIELS: ${{ secrets.NIELS }}
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "*/5 * * * *"
-  workflow_dispatch:
 
 jobs:
   update:
