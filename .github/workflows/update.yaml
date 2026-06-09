@@ -1,4 +1,9 @@
 name: Update agenda
+env:
+  THIJS: ${{ secrets.THIJS }}
+  LUCAS: ${{ secrets.LUCAS }}
+  MARNIX: ${{ secrets.MARNIX }}
+  NIELS: ${{ secrets.NIELS }}
 
 on:
   schedule:
