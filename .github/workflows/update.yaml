@@ -1,4 +1,8 @@
 name: Update agenda
+
+permissions: 
+  contents: write
+
 env:
   THIJS: ${{ secrets.THIJS }}
   LUCAS: ${{ secrets.LUCAS }}
