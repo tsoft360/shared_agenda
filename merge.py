@@ -1,11 +1,12 @@
 import requests
 from icalendar import Calendar
+import os
 
 FEEDS = {
-    thijs: ${{ secrets.THIJS }}
-    lucas: ${{ secrets.LUCAS }}
-    marnix: ${{ secrets.MARNIX }}
-    niels: ${{ secrets.NIELS }}
+    "thijs": os.environ["THIJS"],
+    "lucas": os.environ["LUCAS"],
+    "marnix": os.environ["MARNIX"],
+    "niels": os.environ["NIELS"]
 }
 
 merged_events = {}
