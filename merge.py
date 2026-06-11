@@ -80,5 +80,5 @@ with open("merged.ics", "wb") as f:
 
 print(
     f"Klaar! {len(merged_events)} unieke lessen "
-    "geschreven naar gezamenlijke.ics"
+    "geschreven naar merged.ics"
 )
