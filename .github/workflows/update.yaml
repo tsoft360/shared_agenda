@@ -8,6 +8,7 @@ env:
   LUCAS: ${{ secrets.LUCAS }}
   MARNIX: ${{ secrets.MARNIX }}
   NIELS: ${{ secrets.NIELS }}
+  THIJSR: ${{ secrets.THIJSR }}
 
 on:
   workflow_dispatch:
