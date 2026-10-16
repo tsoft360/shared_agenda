@@ -10,7 +10,9 @@ FEEDS = {
     "marnix": os.environ["MARNIX"].strip(),
     "niels": os.environ["NIELS"].strip(),
     "thijs R.": os.environ["THIJSR"].strip(),
-    "bjorn": os.environ["BJORN"].strip()
+    "bjorn": os.environ["BJORN"].strip(),
+    "quinten": os.environ["QUINTEN"].strip(),
+    "aaron": os.environ["AARON"].strip()
 }
 
 print(FEEDS)
