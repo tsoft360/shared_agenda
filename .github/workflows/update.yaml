@@ -10,6 +10,8 @@ env:
   NIELS: ${{ secrets.NIELS }}
   THIJSR: ${{ secrets.THIJSR }}
   BJORN: ${{ secrets.BJORN }}
+  AARON: ${{ secrets.AARON }}
+  QUINTEN: ${{ secrets.QUINTEN }}
 
 on:
   workflow_dispatch:
