@@ -1,5 +1,5 @@
 import requests
-from icalendar import Calendar
+from icalendar import Calendar, Event
 import os
 import uuid
 from datetime import datetime, time
