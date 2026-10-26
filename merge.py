@@ -108,8 +108,15 @@ for date in dates:
         start_time = time.fromisoformat(start_str)
         end_time = time.fromisoformat(end_str)
 
-        start = datetime.combine(date, start_time)
-        end = datetime.combine(date, end_time)
+        tz = next(
+            start.tzinfo
+            for lessons in student_events.values()
+            for start, end in lessons
+            if isinstance(start, datetime) and start.tzinfo is not None
+        )
+
+        start = datetime.combine(date, start_time, tzinfo=tz)
+        end = datetime.combine(date, end_time, tzinfo=tz)
 
         # Find students with a lesson during this period
         busy_students = set()
