@@ -1,6 +1,8 @@
 import requests
 from icalendar import Calendar
 import os
+import uuid
+from datetime import datetime, time
 
 #secrets
 
@@ -14,6 +16,20 @@ FEEDS = {
     "quinten": os.environ["QUINTEN"].strip(),
     "aaron": os.environ["AARON"].strip()
 }
+
+student_events = {name: [] for name in FEEDS}
+
+LESSON_TIMES = [
+    ("08:30", "09:20"),
+    ("09:20", "10:10"),
+    ("10:30", "11:20"),
+    ("11:20", "12:10"),
+    ("12:40", "13:30"),
+    ("13:30", "14:20"),
+    ("14:30", "15:20"),
+    ("15:20", "16:10"),
+    ("16:10", "17:00"),
+]
 
 print(FEEDS)
 
@@ -31,6 +47,7 @@ for student_name, url in FEEDS.items():
 
         start = component.get("DTSTART").dt
         end = component.get("DTEND").dt
+        student_events[student_name].append((start, end))
 
         summary = str(component.get("SUMMARY", ""))
         location = str(component.get("LOCATION", ""))
@@ -78,6 +95,53 @@ for info in merged_events.values():
     event["DESCRIPTION"] = new_description
 
     merged_calendar.add_component(event)
+
+dates = {
+    start.date()
+    for lessons in student_events.values()
+    for start, end in lessons
+    if isinstance(start, datetime)
+}
+
+for date in dates:
+    for start_str, end_str in LESSON_TIMES:
+        start_time = time.fromisoformat(start_str)
+        end_time = time.fromisoformat(end_str)
+
+        start = datetime.combine(date, start_time)
+        end = datetime.combine(date, end_time)
+
+        # Find students with a lesson during this period
+        busy_students = set()
+
+        for student, lessons in student_events.items():
+            for lesson_start, lesson_end in lessons:
+                if lesson_start < end and lesson_end > start:
+                    busy_students.add(student)
+                    break
+
+        free_students = sorted(
+            set(FEEDS.keys()) - busy_students
+        )
+
+        if not free_students:
+            continue
+
+        free_event = Event()
+        free_event.add("uid", f"{uuid.uuid4()}@rooster")
+        free_event.add("dtstamp", datetime.now().astimezone())
+        free_event.add("dtstart", start)
+        free_event.add("dtend", end)
+        free_event.add(
+            "summary",
+            "Vrij: " + ", ".join(free_students)
+        )
+        free_event.add(
+            "description",
+            "Studenten zonder les:\n" + "\n".join(free_students)
+        )
+
+        merged_calendar.add_component(free_event)
 
 with open("merged.ics", "wb") as f:
     f.write(merged_calendar.to_ical())
